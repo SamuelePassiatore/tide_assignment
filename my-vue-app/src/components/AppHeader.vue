@@ -1,9 +1,10 @@
 <script>
 export default {
     name: "AppHeader",
-    data() {
-        return {
-
+    methods: {
+        logout() {
+            // Redirect to login page
+            this.$router.push({ name: 'login' });
         }
     }
 };
@@ -18,7 +19,7 @@ export default {
         <div id="navbarNavAltMarkup">
             <div class="navbar-nav d-flex">
                 <button class="btn btn-primary me-2">Connect wallet</button>
-                <button class="btn btn-danger">Log out</button>
+                <button class="btn btn-danger" @click="logout">Log out</button>
             </div>
         </div>
     </nav>
