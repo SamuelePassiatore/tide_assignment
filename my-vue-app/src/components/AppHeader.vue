@@ -1,5 +1,6 @@
 <script>
 import Web3 from 'web3';
+import { mapActions } from 'vuex';
 
 export default {
     name: 'AppHeader',
@@ -12,15 +13,15 @@ export default {
         };
     },
     methods: {
+        ...mapActions(['setUserAddress', 'clearUserAddress']),
         async connectWallet() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    // Request account access
                     this.web3 = new Web3(window.ethereum);
                     this.accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     this.userAddress = this.accounts[0];
                     this.isConnected = true;
-
+                    this.setUserAddress(this.userAddress);
                     console.log('Connected account:', this.userAddress);
                 } catch (error) {
                     console.error('Error connecting to wallet:', error);
@@ -36,7 +37,7 @@ export default {
             this.accounts = [];
             this.userAddress = null;
             this.isConnected = false;
-
+            this.clearUserAddress();
             alert('You have been logged out of the application. Please disconnect your wallet from MetaMask for complete security.');
             this.$router.push({ name: 'login' });
         }
@@ -44,8 +45,8 @@ export default {
     computed: {
         formatUserAddress() {
             if (this.userAddress) {
-                const firstChars = this.userAddress.substring(0, 6); // mostra i primi 6 caratteri
-                const lastChars = this.userAddress.substring(this.userAddress.length - 4); // mostra gli ultimi 4 caratteri
+                const firstChars = this.userAddress.substring(0, 6);
+                const lastChars = this.userAddress.substring(this.userAddress.length - 4);
                 return `${firstChars}...${lastChars}`;
             } else {
                 return '';
@@ -53,7 +54,6 @@ export default {
         }
     },
     mounted() {
-        // Check if already connected on component mount
         if (typeof window.ethereum !== 'undefined') {
             window.ethereum.request({ method: 'eth_accounts' })
                 .then(accounts => {
@@ -61,7 +61,7 @@ export default {
                         this.accounts = accounts;
                         this.userAddress = this.accounts[0];
                         this.isConnected = true;
-
+                        this.setUserAddress(this.userAddress);
                         console.log('Wallet already connected:', this.userAddress);
                     }
                 })
