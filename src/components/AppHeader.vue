@@ -84,7 +84,7 @@ export default {
                 <button v-if="!isConnected" class="btn btn-primary me-4" @click="connectWallet">Connect wallet</button>
                 <div v-if="isConnected" class="me-4">
                     <img src="../../public/metamask.png" alt="metamask" class="logo-wallet me-1">
-                    <span class="me-2 text-white">{{ formatUserAddress }}</span>
+                    <span class="me-2 text-white wallet-address">{{ formatUserAddress }}</span>
                 </div>
                 <button class="btn btn-danger" @click="logout">Log out</button>
             </div>
