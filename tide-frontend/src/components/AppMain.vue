@@ -77,6 +77,7 @@ export default {
                             with this wallet. YOU CAN MINT THE NFT!
                         </p>
                         <button class="btn btn-warning">MINT NFT</button>
+                        <p>See the transaction on Sepolia Etherscan</p>
                     </div>
                 </div>
             </div>
