@@ -48,6 +48,24 @@ export default {
                 console.error('Error fetching transactions:', error);
                 alert('An error occurred while fetching transactions.');
             }
+        },
+        async mintNFT() {
+            if (!this.userAddress) {
+                alert('Please connect your wallet first.');
+                return;
+            }
+
+            try {
+                const response = await axios.post('http://localhost:3000/api/mint', { address: this.userAddress });
+                if (response.status === 200) {
+                    alert('NFT Minted Successfully!');
+                } else {
+                    alert('Failed to mint NFT.');
+                }
+            } catch (error) {
+                console.error('Error minting NFT:', error);
+                alert('An error occurred while minting the NFT.');
+            }
         }
     }
 };
@@ -76,7 +94,7 @@ export default {
                         <p class="text-success text-bold">You have made a transaction on Uniswap in the last 24 hours
                             with this wallet. YOU CAN MINT THE NFT!
                         </p>
-                        <button class="btn btn-warning">MINT NFT</button>
+                        <button @click="mintNFT" class="btn btn-warning">MINT NFT</button>
                         <p>See the transaction on Sepolia Etherscan</p>
                     </div>
                 </div>
