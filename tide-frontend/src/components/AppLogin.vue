@@ -54,7 +54,7 @@ export default {
         color: lighten(white, 20%);
         font-size: 1.35em;
         display: block;
-        background: #2a2a2a;
+        background-color: darkblue;
         text-transform: uppercase;
         padding: .75em 1em .75em 1.5em;
         box-shadow: inset 0px 1px 1px fadeout(white, 95%);
@@ -81,8 +81,8 @@ export default {
 
     .btn {
         display: inline-block;
-        background: #2b2359;
-        border: 1px solid darken(#2b2359, 5%);
+        background-color: darkblue;
+        border: 1px solid darken(darkblue, 5%);
         padding: .5em 2em;
         color: white;
         margin-right: .5em;

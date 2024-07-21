@@ -40,7 +40,10 @@ export default {
             this.clearUserAddress();
             alert('You have been logged out of the application. Please disconnect your wallet from MetaMask for complete security.');
             this.$router.push({ name: 'login' });
-        }
+        },
+        refreshHomePage() {
+            window.location.reload();
+        },
     },
     computed: {
         formatUserAddress() {
@@ -76,7 +79,7 @@ export default {
 <template>
     <nav class="navbar navbar-expand-lg d-flex align-items-center justify-content-between px-5 py-3">
         <div class="d-flex align-items-center">
-            <img src="../../public/ethereum_logo.png" class="logo" alt="logo">
+            <img @click="refreshHomePage" src="../../public/ethereum_logo.png" class="logo" alt="logo">
             <span class="name ps-3 fs-3" href="#">TIDE</span>
         </div>
         <div id="navbarNavAltMarkup">
@@ -95,11 +98,13 @@ export default {
 <style lang="scss" scoped>
 .logo {
     width: 30px;
+    cursor: pointer;
 }
 
 nav {
     height: 100px;
     background-color: darkblue;
+    border-bottom: 2px solid white;
 }
 
 .name {
