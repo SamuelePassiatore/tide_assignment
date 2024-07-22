@@ -2,17 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { Web3 } = require('web3');  // Importa web3
+const { Web3 } = require('web3');
 const axios = require('axios');
 const fs = require('fs');
 const FormData = require('form-data');
 
 const app = express();
+// const port = process.env.PORT || 3000;
 const port = process.env.PORT || 10000;
 
-// Configura CORS per consentire le richieste dal dominio del frontend
+// Configure CORS to allow requests from the frontend domain
 app.use(cors({
-    origin: 'https://tide-assignment-frontend.onrender.com', // Sostituisci con il dominio del tuo frontend
+    origin: 'https://tide-assignment-frontend.onrender.com',
     methods: 'GET,POST',
     allowedHeaders: 'Content-Type,Authorization'
 }));
@@ -25,7 +26,7 @@ const contractAddress = process.env.CONTRACT_ADDRESS;
 const pinataApiKey = process.env.PINATA_API_KEY;
 const pinataSecretApiKey = process.env.PINATA_API_SECRET;
 
-// ABI del contratto
+// ABI contract
 const contractABI = [
     {
         "inputs": [
