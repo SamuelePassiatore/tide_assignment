@@ -1,6 +1,6 @@
 <h1 align="center">Tide Assignment</h1>
 
-🏠 Hosted on: <a href="#">https://watercredit-front-end.onrender.com/</a><br/>
+🏠 Hosted on: <a href="#">https://tide-assignment.onrender.com/</a><br/>
 <span style="background-color: #990000"><b>NOTE: Since the site is hosted on Render with free pricing, consequently the various layers of the project (front-end and back-end) will be cut if not used within a certain time limit.</b></span>
 
 <h3>Tide Back End</h3>
