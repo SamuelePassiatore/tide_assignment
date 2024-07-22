@@ -68,7 +68,7 @@ export default {
             this.errorMessage = null;
 
             try {
-                const response = await axios.post('https://tide-assignment-backend.onrender.com', { address: this.userAddress });
+                const response = await axios.post('https://tide-assignment-backend.onrender.com/api/mint', { address: this.userAddress });
                 if (response.status === 200) {
                     const txHash = response.data.transactionHash;
                     this.txHash = txHash;

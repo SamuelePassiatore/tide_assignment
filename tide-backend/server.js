@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const {Web3} = require('web3');  // Importa web3
+const { Web3 } = require('web3');  // Importa web3
 const axios = require('axios');
 const fs = require('fs');
 const FormData = require('form-data');
@@ -10,7 +10,13 @@ const FormData = require('form-data');
 const app = express();
 const port = process.env.PORT || 10000;
 
-app.use(cors());
+// Configura CORS per consentire le richieste dal dominio del frontend
+app.use(cors({
+    origin: 'https://tide-assignment-frontend.onrender.com', // Sostituisci con il dominio del tuo frontend
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type,Authorization'
+}));
+
 app.use(bodyParser.json());
 
 const rpcUrl = process.env.RPC_URL;
@@ -82,7 +88,6 @@ async function mintNFT(to, tokenURI) {
         throw error;
     }
 }
-
 
 app.post('/api/mint', async (req, res) => {
     const userAddress = req.body.address;
