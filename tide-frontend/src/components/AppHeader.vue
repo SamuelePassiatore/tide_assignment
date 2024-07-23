@@ -79,7 +79,7 @@ export default {
 <template>
     <nav class="navbar navbar-expand-lg d-flex align-items-center justify-content-between px-5 py-3">
         <div class="d-flex align-items-center">
-            <img @click="refreshHomePage" src="../../public/ethereum_logo.png" class="logo" alt="logo">
+            <img @click="backToHomePage" src="../../public/ethereum_logo.png" class="logo" alt="logo">
             <span class="name ps-3 fs-3" href="#">TIDE</span>
         </div>
         <div id="navbarNavAltMarkup">
