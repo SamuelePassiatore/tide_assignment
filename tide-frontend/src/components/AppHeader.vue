@@ -41,8 +41,8 @@ export default {
             alert('You have been logged out of the application. Please disconnect your wallet from MetaMask for complete security.');
             this.$router.push({ name: 'login' });
         },
-        refreshHomePage() {
-            window.location.reload();
+        backToHomePage() {
+            this.$router.push({ name: 'login' });
         },
     },
     computed: {
